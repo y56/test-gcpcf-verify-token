@@ -15,7 +15,9 @@ from firebase_admin import db
 from firebase_admin import auth
 from firebase_admin import credentials
 
+from flask_cors import cross_origin
 
+@cross_origin()
 def main(request):
     """HTTP Cloud Function.
     Args:
@@ -52,5 +54,4 @@ def main(request):
     email = decoded_token['email']
     print('bad')
 
-    return 'Hello {}!'.format(escape(uid)) + escape(email)
-
+    return 'Hello {}!'.format(escape(uid)) + escape(email), 200
